@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {{produtos.id}} // {{produtos.descricao}} // {{produtos.quantidade}} // {{produtos.valorUnitario}}
+
+    <form action="{% url 'updateProduto' produtos.id %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="descricao" value="{{produtos.descricao}}">
+        {% csrf_token %}
+        <input type="text" name="quantidade" value="{{produtos.quantidade}}">
+        {% csrf_token %}
+        <input type="text" name="valorUnitario" value="{{produtos.valorUnitario}}">
+        <button type="submit">Update</button>
+    </form>
+    
+</body>
+</html>

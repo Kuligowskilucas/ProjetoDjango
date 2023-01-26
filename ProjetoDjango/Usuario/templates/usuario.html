@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        {% for usuario in usuarios %}
+        <li>{{usuario.id}} // {{usuario.nome}} // {{usuario.endereco}} // {{usuario.telefone}} // {{usuario.cpf}} //
+            <a href="{% url 'editarUsuario' usuario.id %}">Editar</a> //
+            <a href="{% url 'deleteUsuario' usuario.id %}">Deletar</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <form action="{% url 'salvarUsuario' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="nome">
+        {% csrf_token %}
+        <input type="text" name="endereco">
+        {% csrf_token %}
+        <input type="text" name="telefone">
+        {% csrf_token %}
+        <input type="text" name="cpf">
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
